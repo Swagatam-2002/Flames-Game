@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 from flames import calculate_flames
+import re
 
 app = Flask(__name__)
 
@@ -19,6 +20,14 @@ def home():
         if not your_name or not person_name:
 
             error = "Please enter both names."
+
+        elif not isinstance(your_name, str) or not isinstance(person_name, str):
+
+            error = "Please enter valid names."
+
+        elif not re.match("^[A-Za-z ]+$", your_name) or not re.match("^[A-Za-z ]+$", person_name):
+
+            error = "Please enter valid names containing only letters"
 
         else:
 

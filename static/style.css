@@ -153,6 +153,29 @@ body {
         0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
+.game-header h1.game-title {
+
+    font-size: 48px;
+
+    font-weight: 800;
+
+    letter-spacing: 5px;
+
+    text-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.3);
+
+    background:
+        linear-gradient(
+            135deg,
+            #e30b04,
+            #ed05be
+        );
+
+    background-clip: text;
+    -webkit-background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+}
 
 .subtitle {
 
@@ -334,11 +357,11 @@ body {
     background:
         linear-gradient(
             135deg,
-            #d63384,
-            #9b287b
+            #046223,
+            #0e0887
         );
 
-    color: white;
+    color: rgb(255, 255, 255);
 
     font-size: 16px;
 
@@ -725,7 +748,7 @@ footer {
 
     margin-bottom: 6px;
 
-    color: #ffffff;
+    color: #e8ddddb7;
 }
 
 
@@ -763,7 +786,7 @@ footer {
 
     outline: none;
 
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(248, 243, 243, 0.676);
 
     color: #54204d;
 
@@ -775,11 +798,11 @@ footer {
 
     border: none;
 
-    padding: 0 15px;
+    padding: 5px 15px;
 
     border-radius: 10px;
 
-    background: #ffffff;
+    background: #d6d1d1e4;
 
     color: #9b287b;
 
@@ -795,7 +818,7 @@ footer {
 
     transform: translateY(-2px);
 
-    background: #fff0f8;
+    background: #ddd3d8;
 }
 
 
