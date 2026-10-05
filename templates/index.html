@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FLAMES - Love Compatibility Game</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+
+<body>
+
+    <div class="background-circle circle-one"></div>
+    <div class="background-circle circle-two"></div>
+    <div class="background-circle circle-three"></div>
+
+
+    <main class="game-container">
+
+        <!-- Header -->
+
+        <div class="game-header">
+
+            <div class="flame-icon">
+                🔥
+            </div>
+
+            <h1>FLAMES</h1>
+
+            <p class="subtitle">
+                Find out what your relationship says!
+            </p>
+
+        </div>
+
+
+        <!-- Main Card -->
+
+        <div class="game-card">
+
+            <div class="card-intro">
+
+                <h2>💕 Let's Find Out</h2>
+
+                <p>
+                    Enter two names and discover your FLAMES result.
+                </p>
+
+            </div>
+
+
+            <form method="POST" class="flames-form">
+                {% if error %}
+
+                <div class="error-message">
+                    ⚠️ {{ error }}
+                </div>
+
+                {% endif %}
+
+                <!-- Your Name -->
+
+                <div class="input-group">
+
+                    <label for="your_name">
+                        Your Name
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <span class="input-icon">
+                            👤
+                        </span>
+
+                        <input
+                            type="text"
+                            id="your_name"
+                            name="your_name"
+                            placeholder="Enter your name"
+                            autocomplete="off"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- Heart -->
+
+                <div class="heart-divider">
+                    ❤️
+                </div>
+
+
+                <!-- Person Name -->
+
+                <div class="input-group">
+
+                    <label for="person_name">
+                        Person's Name
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <span class="input-icon">
+                            💕
+                        </span>
+
+                        <input
+                            type="text"
+                            id="person_name"
+                            name="person_name"
+                            placeholder="Enter person's name"
+                            autocomplete="off"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- Button -->
+
+                <button type="submit" class="calculate-button">
+
+                    <span>🔥 Calculate FLAMES</span>
+
+                </button>
+
+            </form>
+
+
+            <!-- Result -->
+
+            {% if result %}
+
+            <div class="result-box">
+
+                <div class="result-icon">
+                    ✨
+                </div>
+
+                <p class="result-label">
+                    Your FLAMES Result
+                </p>
+
+                <h2>
+                    {{ result }}
+                </h2>
+
+                <p class="result-message">
+
+                    {% if result == "Friends" %}
+                        You two share a wonderful friendship! 💙
+
+                    {% elif result == "Lovers" %}
+                        Looks like there is some romance in the air! ❤️
+
+                    {% elif result == "Affectionate" %}
+                        There is a special affection between you! 💕
+
+                    {% elif result == "Marriage" %}
+                        Who knows... maybe wedding bells are coming! 💍
+
+                    {% elif result == "Enemies" %}
+                        Hmm... maybe you two need a little less drama! 😄
+
+                    {% else %}
+                        A special sibling-like bond! 🫶
+                    {% endif %}
+
+                </p>
+
+            </div>
+
+            {% endif %}
+
+
+            <!-- Reset Button -->
+
+            {% if result %}
+
+            <a href="/" class="play-again">
+                🔄 Play Again
+            </a>
+
+            {% endif %}
+
+
+        </div>
+
+
+        <!-- Footer -->
+
+        <footer>
+
+            <p>
+                ✨ Just for fun • Powered by Python & Flask
+            </p>
+
+        </footer>
+
+    </main>
+
+</body>
+
+</html>
