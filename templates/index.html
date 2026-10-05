@@ -9,6 +9,8 @@
 
     <title>FLAMES - Love Compatibility Game</title>
 
+    <link rel="icon" href="logo.jpg" type="image/x-icon">
+
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 
 </head>
@@ -198,18 +200,139 @@
         </div>
 
 
+                <!-- Share Game -->
+
+        <div class="share-section">
+
+            <h3>🔗 Share FLAMES With Friends</h3>
+
+            <p>
+                Copy the link and challenge your friends!
+            </p>
+
+            <div class="share-link-box">
+
+                <input
+                    type="text"
+                    id="game-link"
+                    readonly
+                >
+
+                <button
+                    type="button"
+                    id="copy-button"
+                    onclick="copyGameLink()"
+                >
+                    📋 Copy
+                </button>
+
+            </div>
+
+            <button
+                type="button"
+                class="share-button"
+                onclick="shareGame()"
+            >
+                📤 Share With Friends
+            </button>
+
+            <p
+                id="copy-message"
+                class="copy-message"
+            ></p>
+
+        </div>
+
+
         <!-- Footer -->
 
         <footer>
 
             <p>
-                ✨ Just for fun • Powered by Python & Flask
+                ✨ Just for fun || Take it seriously as well 😉✨
             </p>
 
         </footer>
 
     </main>
 
+    <script>
+
+        // Show the current public website URL
+        document.getElementById("game-link").value = window.location.href;
+
+
+        // Copy game link
+        function copyGameLink() {
+
+            const link = document.getElementById("game-link");
+            const message = document.getElementById("copy-message");
+            const button = document.getElementById("copy-button");
+
+            navigator.clipboard.writeText(link.value)
+                .then(function () {
+
+                    button.innerText = "✅ Copied!";
+
+                    message.innerText = "Link copied! Send it to your friends. 🎉";
+
+                    setTimeout(function () {
+
+                        button.innerText = "📋 Copy";
+
+                        message.innerText = "";
+
+                    }, 2500);
+
+                })
+                .catch(function () {
+
+                    link.select();
+
+                    document.execCommand("copy");
+
+                    button.innerText = "✅ Copied!";
+
+                    message.innerText = "Link copied! 🎉";
+
+                    setTimeout(function () {
+
+                        button.innerText = "📋 Copy";
+
+                        message.innerText = "";
+
+                    }, 2500);
+
+                });
+        }
+
+
+        // Share game using device's native share menu
+        function shareGame() {
+
+            const gameLink = window.location.href;
+
+            if (navigator.share) {
+
+                navigator.share({
+
+                    title: "🔥 FLAMES Game",
+
+                    text: "Try this FLAMES game with me! ❤️",
+
+                    url: gameLink
+
+                });
+
+            } else {
+
+                copyGameLink();
+
+            }
+
+        }
+
+    </script>
 </body>
 
 </html>
