@@ -259,7 +259,7 @@
     <script>
 
         // Show the current public website URL
-        document.getElementById("game-link").value = window.location.href;
+        document.getElementById("game-link").value = window.location.origin;
 
 
         // Copy game link
@@ -310,7 +310,7 @@
         // Share game using device's native share menu
         function shareGame() {
 
-            const gameLink = window.location.href;
+            const gameLink = window.location.origin;
 
             if (navigator.share) {
 
