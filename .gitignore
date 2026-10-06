@@ -3,4 +3,4 @@ __pycache__/
 .venv/
 venv/
 .env
-logo.jpg
+static/logo.png

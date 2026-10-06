@@ -10,6 +10,8 @@ def home():
 
     result = None
     error = None
+    your_name = ""
+    person_name = ""
 
     if request.method == "POST":
 
@@ -35,6 +37,8 @@ def home():
 
     return render_template(
         "index.html",
+        your_name=your_name,
+        person_name=person_name,
         result=result,
         error=error
     )

@@ -9,7 +9,7 @@
 
     <title>FLAMES - Love Compatibility Game</title>
 
-    <link rel="icon" href="logo.jpg" type="image/x-icon">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='logo.png') }}">
 
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 
@@ -133,14 +133,30 @@
 
                 <!-- Button -->
 
-                <button type="submit" class="calculate-button">
+                <button type="submit" class="calculate-button" id="calculate-button">
 
                     <span>🔥 Calculate FLAMES 💖</span>
 
                 </button>
 
             </form>
+            
+            <!-- Loading Section -->
+            <div id="loading-section" class="loading-section">
 
+                <div class="loading-flame">🔥</div>
+
+                <h3>Calculating Your FLAMES...</h3>
+
+                <p>Let's see what destiny says! ❤️</p>
+
+                <div class="loading-bar">
+                    <div class="loading-progress"></div>
+                </div>
+
+                <span class="loading-time">Please wait...</span>
+
+            </div>
 
             <!-- Result -->
 
@@ -155,6 +171,10 @@
                 <p class="result-label">
                     Your FLAMES Result
                 </p>
+
+                <h1 class="result-title">
+                    {{ your_name }} <br>👉👈<br> {{ person_name }}
+                </h1>
 
                 <h2>
                     {{ result }}
@@ -209,7 +229,7 @@
             <h3>🔗 Share FLAMES With Friends</h3>
 
             <p>
-                Copy the link and challenge your friends!
+                Copy the link and give a chance to others to check! 😎
             </p>
 
             <div class="share-link-box">
@@ -334,7 +354,45 @@
 
         }
 
+        const flamesForm = document.querySelector(".flames-form");
+        const loadingSection = document.getElementById("loading-section");
+        const calculateButton = document.getElementById("calculate-button");
+
+        flamesForm.addEventListener("submit", function(event) {
+
+            const yourName = document.getElementById("your_name").value.trim();
+            const personName = document.getElementById("person_name").value.trim();
+
+            // Check for empty values
+            if (!yourName || !personName) {
+                return;
+            }
+
+            // Check that names contain letters and spaces only
+            const namePattern = /^[A-Za-z ]+$/;
+
+            if (!namePattern.test(yourName) || !namePattern.test(personName)) {
+                return;
+            }
+
+            // Valid names → show loading animation
+            event.preventDefault();
+
+            loadingSection.style.display = "block";
+
+            calculateButton.disabled = true;
+            calculateButton.innerHTML = "🔥 Calculating...";
+
+            // Wait 5 seconds
+            setTimeout(function() {
+
+                flamesForm.submit();
+
+            }, 5000);
+
+        });
     </script>
+
 </body>
 
 </html>
